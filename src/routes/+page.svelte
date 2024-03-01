@@ -10,6 +10,7 @@
   import { appStore } from "$lib/store";
   import { wrap } from "svelte-spa-router/wrap";
   import { push, pop, replace } from "svelte-spa-router";
+  import NotFound from "$lib/routes/NotFound.svelte";
 
   const routes = {
     // Exact path
@@ -28,7 +29,8 @@
           return $appStore.app.login;
         }
       ]
-    })
+    }),
+    "*": NotFound
   };
 
   const toggleLogin = () => {
