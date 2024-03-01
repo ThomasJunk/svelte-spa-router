@@ -3,6 +3,7 @@
   import About from "$lib/routes/About.svelte";
   import Login from "$lib/routes/Login.svelte";
   import Things from "$lib/routes/Things.svelte";
+  import ComplexRoute from "$lib/routes/ComplexRoute.svelte";
   import Router from "svelte-spa-router";
   import { link } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
@@ -15,6 +16,7 @@
     "/": Home,
     "/about": About,
     "/login": Login,
+    "/collection/:namespace/:subnamespace/document/:id": ComplexRoute,
     "/things": wrap({
       component: Things,
       userData: {
@@ -47,6 +49,9 @@
     <ul class="menu">
       <li><a href="/" use:link use:active={"/"}>Home</a></li>
       <li><a href="/things" use:link use:active={"/things"}>Things</a></li>
+      <li>
+        <a href="/collection/Category/Subcategory/document/1" use:link>Category/Subcategory</a>
+      </li>
       <li><a href="/about" use:link use:active={"/about"}>About</a></li>
       <li>
         <button on:click={toggleLogin}>
